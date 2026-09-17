@@ -2,7 +2,13 @@
   "version": 1,
   "project": "Project Report",
   "lastDurationMins": 45,
-  "parkingLot": [],
+  "parkingLot": [
+    {
+      "id": "p_mu5dcxz8_qlmji7",
+      "text": "Update feedback spreadsheet with Norfolk",
+      "done": false
+    }
+  ],
   "logs": {
     "2026-09-17": []
   }
