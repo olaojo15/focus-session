@@ -54,6 +54,12 @@
         "task": "Test 3",
         "project": "Test",
         "mins": 1
+      },
+      {
+        "time": "13:21",
+        "task": "Test 4",
+        "project": "Test",
+        "mins": 1
       }
     ]
   }
