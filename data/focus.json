@@ -3,5 +3,14 @@
   "project": "test",
   "lastDurationMins": 1,
   "parkingLot": [],
-  "logs": {}
+  "logs": {
+    "2026-09-17": [
+      {
+        "time": "09:36",
+        "task": "test",
+        "project": "test",
+        "mins": 1
+      }
+    ]
+  }
 }
