@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjIwIiBmaWxsPSIjMTcxMzBkIi8+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMzIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzNhMmYyMCIgc3Ryb2tlLXdpZHRoPSI5Ii8+PHBhdGggZD0iTTUwIDE4IEEzMiAzMiAwIDEgMSAyMS40IDY1LjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q5YTQ0MSIgc3Ryb2tlLXdpZHRoPSI5IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI3IiBmaWxsPSIjZDlhNDQxIi8+PC9zdmc+Cg==" type="image/svg+xml">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjIwIiBmaWxsPSIjMTcxMzBkIi8+PGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iMzIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzNhMmYyMCIgc3Ryb2tlLXdpZHRoPSI5Ii8+PHBhdGggZD0iTTUwIDE4IEEzMiAzMiAwIDEgMSAyMS40IDY1LjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q5YTQ0MSIgc3Ryb2tlLXdpZHRoPSI5IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI3IiBmaWxsPSIjZDlhNDQxIi8+PC9zdmc+Cg==">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIkZvY3VzIFNlc3Npb24iLCAic2hvcnRfbmFtZSI6ICJGb2N1cyIsICJzdGFydF91cmwiOiAiLiIsICJzY29wZSI6ICIuIiwgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMxNzEzMGQiLCAidGhlbWVfY29sb3IiOiAiIzE3MTMwZCIsICJpY29ucyI6IFt7InNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSFpwWlhkQ2IzZzlJakFnTUNBeE1EQWdNVEF3SWo0OGNtVmpkQ0IzYVdSMGFEMGlNVEF3SWlCb1pXbG5hSFE5SWpFd01DSWdjbmc5SWpJd0lpQm1hV3hzUFNJak1UY3hNekJrSWk4K1BHTnBjbU5zWlNCamVEMGlOVEFpSUdONVBTSTFNQ0lnY2owaU16SWlJR1pwYkd3OUltNXZibVVpSUhOMGNtOXJaVDBpSXpOaE1tWXlNQ0lnYzNSeWIydGxMWGRwWkhSb1BTSTVJaTgrUEhCaGRHZ2daRDBpVFRVd0lERTRJRUV6TWlBek1pQXdJREVnTVNBeU1TNDBJRFkxTGpJaUlHWnBiR3c5SW01dmJtVWlJSE4wY205clpUMGlJMlE1WVRRME1TSWdjM1J5YjJ0bExYZHBaSFJvUFNJNUlpQnpkSEp2YTJVdGJHbHVaV05oY0QwaWNtOTFibVFpTHo0OFkybHlZMnhsSUdONFBTSTFNQ0lnWTNrOUlqVXdJaUJ5UFNJM0lpQm1hV3hzUFNJalpEbGhORFF4SWk4K1BDOXpkbWMrQ2c9PSIsICJzaXplcyI6ICJhbnkiLCAidHlwZSI6ICJpbWFnZS9zdmcreG1sIn1dfQ==">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Focus">
+<meta name="theme-color" content="#17130d" id="theme-color-meta">
+<title>Focus Session</title>
+<script>
+(function(){
+  try{
+    var t = localStorage.getItem("fs_theme");
+    if(t !== "light" && t !== "dark"){
+      t = (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) ? "light" : "dark";
+    }
+    document.documentElement.setAttribute("data-theme", t);
+  }catch(e){}
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#17130d; --surface:#241d14; --surface-inset:#1c1710;
+    --text:#ede2ce; --text-muted:#a79a82; --text-faint:#746a58;
+    --accent:#d9a441; --accent-ink:#1c1710; --accent-text:#e6b768;
+    --danger:#a2543c; --danger-ink:#f4e9dd;
+    --border:#3a2f20;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.25);
+    --radius:6px;
+  }
+  :root[data-theme="light"]{
+    --bg:#f6f1e4; --surface:#fffdf8; --surface-inset:#efe6cf;
+    --text:#2b2419; --text-muted:#6b6050; --text-faint:#9c9280;
+    --accent:#c9862f; --accent-ink:#fffaf0; --accent-text:#8f5a1f;
+    --danger:#96412a; --danger-ink:#fff6f0;
+    --border:#e1d4b3;
+    --shadow:0 1px 2px rgba(60,40,10,.08), 0 4px 14px rgba(60,40,10,.06);
+  }
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html{ -webkit-text-size-adjust:100%; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    min-height:100vh; min-height:100dvh;
+    overscroll-behavior-y:contain;
+    padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(28px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  }
+  button,input,textarea{ font-family:inherit; -webkit-touch-callout:none; }
+  button{ user-select:none; }
+  .icon-btn:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--accent); outline-offset:2px;
+  }
+  .app{ max-width:480px; margin:0 auto; display:flex; flex-direction:column; gap:16px; }
+
+  .header{ display:flex; align-items:center; justify-content:space-between; gap:8px; padding:4px 2px; }
+  .header h1{ font-family:'Source Serif 4', Georgia, serif; font-size:1.3rem; font-weight:600; margin:0; }
+  .header-actions{ display:flex; align-items:center; gap:8px; }
+  .icon-btn{
+    width:36px; height:36px; display:flex; align-items:center; justify-content:center;
+    background:transparent; border:1px solid var(--border); border-radius:var(--radius);
+    color:var(--text-muted); cursor:pointer; font-size:1rem; line-height:1;
+  }
+  .icon-btn:hover{ color:var(--text); border-color:var(--text-faint); }
+  .sync-dot{ width:8px; height:8px; border-radius:50%; background:var(--text-faint); flex-shrink:0; }
+  .sync-dot.ok{ background:#5a9c6a; }
+  .sync-dot.busy{ background:var(--accent); animation:pulse 1.2s infinite; }
+  .sync-dot.err{ background:var(--danger); }
+  @keyframes pulse{ 0%,100%{ opacity:1; } 50%{ opacity:.4; } }
+
+  .card{ background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:18px; }
+  .card h2{ font-family:'Source Serif 4', Georgia, serif; font-size:1.05rem; font-weight:600; margin:0 0 14px; }
+  label{ display:block; font-size:.72rem; letter-spacing:.03em; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px; }
+  .field{ margin-bottom:14px; }
+  .field:last-child{ margin-bottom:0; }
+  input[type=text], input[type=number], input[type=password], textarea{
+    width:100%; background:var(--surface-inset); border:1px solid var(--border); border-radius:var(--radius);
+    color:var(--text); padding:10px 12px; font-size:.95rem;
+  }
+  input::placeholder, textarea::placeholder{ color:var(--text-faint); }
+  input:read-only, textarea:read-only, input:disabled{ opacity:.6; }
+  .outcome-input{ font-family:'Source Serif 4', Georgia, serif; font-size:1.15rem; min-height:64px; resize:vertical; }
+
+  .duration-row{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .duration-input{ width:88px; text-align:center; font-variant-numeric:tabular-nums; }
+  .chip-row{ display:flex; gap:6px; flex-wrap:wrap; }
+  .chip{ background:var(--surface-inset); border:1px solid var(--border); color:var(--text-muted); border-radius:999px; padding:6px 13px; font-size:.8rem; cursor:pointer; }
+  .chip:hover{ color:var(--text); border-color:var(--accent); }
+  .chip:disabled{ opacity:.5; cursor:not-allowed; }
+
+  .timer-wrap{ display:flex; flex-direction:column; align-items:center; gap:16px; padding:22px 0 6px; }
+  .ring-center{ position:relative; width:220px; height:220px; }
+  .ring-svg{ width:220px; height:220px; }
+  .ring-track{ fill:none; stroke:var(--border); stroke-width:10; }
+  .ring-progress{
+    fill:none; stroke:var(--accent); stroke-width:10; stroke-linecap:round;
+    transform:rotate(-90deg); transform-origin:50% 50%;
+    transition:stroke-dashoffset .25s linear, stroke .2s;
+  }
+  @media (prefers-reduced-motion: reduce){ .ring-progress{ transition:none; } }
+  .timer-digits{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    font-variant-numeric:tabular-nums; font-size:2.5rem; font-weight:600; letter-spacing:.02em;
+  }
+  .block-complete-msg{ color:var(--accent-text); font-size:.9rem; text-align:center; min-height:1.2em; }
+  .controls-row{ display:flex; gap:10px; justify-content:center; width:100%; }
+
+  .btn{
+    border:1px solid var(--border); background:var(--surface-inset); color:var(--text);
+    border-radius:var(--radius); padding:11px 18px; font-size:.9rem; font-weight:500; cursor:pointer; flex:1;
+  }
+  .btn:hover{ border-color:var(--text-faint); }
+  .btn-primary{ background:var(--accent); border-color:var(--accent); color:var(--accent-ink); }
+  .btn-primary:hover{ filter:brightness(1.06); }
+  .btn:disabled{ opacity:.45; cursor:not-allowed; }
+
+  .parking-add-row{ display:flex; gap:8px; margin-bottom:12px; }
+  .parking-add-row input{ flex:1; }
+  .list-empty{ color:var(--text-faint); font-size:.85rem; padding:6px 2px; }
+  .park-item, .log-item{ display:flex; align-items:center; gap:10px; padding:9px 0; border-bottom:1px solid var(--border); }
+  .park-item:last-child, .log-item:last-child{ border-bottom:none; }
+  .park-check{
+    width:20px; height:20px; border-radius:50%; border:1.5px solid var(--text-faint);
+    background:transparent; flex-shrink:0; cursor:pointer; padding:0;
+  }
+  .park-check.done{ background:var(--accent); border-color:var(--accent); }
+  .park-text{ flex:1; font-size:.92rem; word-break:break-word; }
+  .park-text.done{ text-decoration:line-through; color:var(--text-faint); }
+  .delete-btn{ background:none; border:none; color:var(--text-faint); cursor:pointer; font-size:1rem; padding:4px; flex-shrink:0; }
+  .delete-btn:hover{ color:var(--danger); }
+
+  .log-summary{ color:var(--text-muted); font-size:.85rem; margin-bottom:10px; min-height:1.2em; }
+  .log-meta{ flex:1; min-width:0; }
+  .log-outcome{ font-size:.92rem; word-break:break-word; }
+  .log-sub{ font-size:.78rem; color:var(--text-muted); margin-top:2px; }
+  .log-mins{ font-variant-numeric:tabular-nums; color:var(--text-muted); font-size:.85rem; flex-shrink:0; }
+  .card-footer{ margin-top:12px; text-align:right; }
+  .text-btn{ background:none; border:none; color:var(--text-muted); font-size:.8rem; cursor:pointer; text-decoration:underline; padding:4px; }
+  .text-btn:hover{ color:var(--text); }
+  .btn-danger-text{ color:var(--danger); }
+
+  .overlay{ position:fixed; inset:0; background:var(--bg); display:flex; align-items:center; justify-content:center; padding:20px; z-index:50; overflow-y:auto; }
+  .overlay-card{ max-width:380px; width:100%; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:26px; margin:auto; }
+  .overlay-card h1{ font-family:'Source Serif 4', Georgia, serif; font-size:1.4rem; margin:0 0 8px; }
+  .overlay-card .sub{ color:var(--text-muted); font-size:.88rem; margin:0 0 20px; line-height:1.5; }
+  .error-text{ color:var(--danger); font-size:.82rem; min-height:1.2em; margin-top:10px; }
+  .setup-divider{ border-top:1px solid var(--border); margin:18px 0; padding-top:18px; }
+  .modal-actions{ display:flex; gap:10px; margin-top:18px; }
+
+  .toast{
+    position:fixed; bottom:20px; left:50%; transform:translate(-50%,10px);
+    background:var(--surface); border:1px solid var(--border); color:var(--text);
+    padding:10px 16px; border-radius:var(--radius); font-size:.85rem;
+    opacity:0; pointer-events:none; transition:opacity .2s, transform .2s;
+    box-shadow:var(--shadow); max-width:90vw; z-index:60;
+  }
+  .toast.show{ opacity:1; transform:translate(-50%,0); }
+  [hidden]{ display:none !important; }
+</style>
+</head>
+<body>
+
+<div id="toast" class="toast"></div>
+
+<div id="lock-screen" class="overlay" hidden>
+  <div class="overlay-card">
+    <h1>Focus Session</h1>
+    <p class="sub" id="lock-sub">This is private. Enter your passcode to continue.</p>
+    <div class="field">
+      <label for="passcode-input">Passcode</label>
+      <input type="password" id="passcode-input" autocomplete="off" inputmode="text">
+    </div>
+    <button class="btn btn-primary" id="unlock-btn" style="width:100%">Unlock</button>
+    <p class="error-text" id="lock-error"></p>
+  </div>
+</div>
+
+<div id="setup-screen" class="overlay" hidden>
+  <div class="overlay-card">
+    <h1>Set up Focus Session</h1>
+    <p class="sub">This runs once per device. Choose a passcode, then connect the GitHub repo so your log and parking lot follow you between devices.</p>
+    <div class="field">
+      <label for="setup-passcode">Choose a passcode</label>
+      <input type="password" id="setup-passcode" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="setup-passcode-confirm">Confirm passcode</label>
+      <input type="password" id="setup-passcode-confirm" autocomplete="off">
+    </div>
+    <div class="setup-divider">
+      <div class="field">
+        <label for="setup-owner">GitHub username</label>
+        <input type="text" id="setup-owner" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+      </div>
+      <div class="field">
+        <label for="setup-repo">Repository name</label>
+        <input type="text" id="setup-repo" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" value="focus-session">
+      </div>
+      <div class="field">
+        <label for="setup-branch">Branch</label>
+        <input type="text" id="setup-branch" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" value="main">
+      </div>
+      <div class="field">
+        <label for="setup-path">Data file path</label>
+        <input type="text" id="setup-path" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" value="data/focus.json">
+      </div>
+      <div class="field">
+        <label for="setup-token">Personal access token</label>
+        <input type="password" id="setup-token" autocomplete="off">
+      </div>
+    </div>
+    <button class="btn btn-primary" id="setup-save-btn" style="width:100%">Save &amp; connect</button>
+    <p class="error-text" id="setup-error"></p>
+  </div>
+</div>
+
+<div id="settings-screen" class="overlay" hidden>
+  <div class="overlay-card">
+    <h1>Settings</h1>
+    <div class="field">
+      <label for="s-owner">GitHub username</label>
+      <input type="text" id="s-owner" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+    </div>
+    <div class="field">
+      <label for="s-repo">Repository name</label>
+      <input type="text" id="s-repo" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+    </div>
+    <div class="field">
+      <label for="s-branch">Branch</label>
+      <input type="text" id="s-branch" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+    </div>
+    <div class="field">
+      <label for="s-path">Data file path</label>
+      <input type="text" id="s-path" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+    </div>
+    <div class="field">
+      <label for="s-token">Personal access token (leave blank to keep current)</label>
+      <input type="password" id="s-token" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="s-new-passcode">Change passcode (leave blank to keep current)</label>
+      <input type="password" id="s-new-passcode" autocomplete="off">
+    </div>
+    <div class="modal-actions">
+      <button class="btn" id="settings-cancel-btn">Cancel</button>
+      <button class="btn btn-primary" id="settings-save-btn">Save</button>
+    </div>
+    <p class="error-text" id="settings-error"></p>
+    <div class="setup-divider">
+      <button class="text-btn btn-danger-text" id="forget-device-btn">Forget this device</button>
+    </div>
+  </div>
+</div>
+
+<div class="app" id="app-root" hidden>
+  <div class="header">
+    <h1>Focus Session</h1>
+    <div class="header-actions">
+      <span class="sync-dot" id="sync-dot" title=""></span>
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+      <button class="icon-btn" id="settings-btn" aria-label="Settings" title="Settings">⚙</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="field">
+      <label for="project-input">Project</label>
+      <input type="text" id="project-input" placeholder="e.g. DfE eligibility workstream">
+    </div>
+    <div class="field">
+      <label for="outcome-input">Outcome — what does &ldquo;done&rdquo; look like?</label>
+      <textarea id="outcome-input" class="outcome-input" placeholder="e.g. First draft of the eligibility section outlined"></textarea>
+    </div>
+    <div class="field">
+      <label for="duration-input">Duration (minutes)</label>
+      <div class="duration-row">
+        <input type="number" id="duration-input" class="duration-input" min="1" max="240" step="1" inputmode="numeric">
+        <div class="chip-row">
+          <button type="button" class="chip" data-mins="25">25</button>
+          <button type="button" class="chip" data-mins="50">50</button>
+          <button type="button" class="chip" data-mins="90">90</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="timer-wrap">
+      <div class="ring-center">
+        <svg class="ring-svg" viewBox="0 0 240 240">
+          <circle class="ring-track" cx="120" cy="120" r="104"></circle>
+          <circle class="ring-progress" id="ring-progress" cx="120" cy="120" r="104"></circle>
+        </svg>
+        <div class="timer-digits" id="timer-digits">50:00</div>
+      </div>
+      <p class="block-complete-msg" id="complete-msg"></p>
+      <div class="controls-row">
+        <button type="button" class="btn" id="reset-btn">Reset</button>
+        <button type="button" class="btn btn-primary" id="start-pause-btn">Start</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Parking lot</h2>
+    <div class="parking-add-row">
+      <input type="text" id="park-input" placeholder="Park a stray thought…">
+      <button type="button" class="btn btn-primary" id="park-add-btn">Add</button>
+    </div>
+    <div id="park-list"></div>
+    <p class="list-empty" id="park-empty" hidden>Nothing parked. Good — stay on task.</p>
+  </div>
+
+  <div class="card">
+    <h2>Today&rsquo;s log</h2>
+    <p class="log-summary" id="log-summary"></p>
+    <div id="log-list"></div>
+    <p class="list-empty" id="log-empty" hidden>No blocks completed yet today.</p>
+    <div class="card-footer">
+      <button type="button" class="text-btn" id="clear-log-btn">Clear today&rsquo;s log</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------------- Storage keys (device-local only) ---------------- */
+  const LS_PASSCODE_HASH = "fs_passcode_hash";
+  const LS_CONFIG = "fs_config";     // {owner, repo, branch, path, token}
+  const LS_CACHE = "fs_cache";       // last-known synced state, offline fallback
+  const LS_THEME = "fs_theme";       // "light" | "dark"
+  const SS_UNLOCKED = "fs_unlocked";
+
+  const $ = (id) => document.getElementById(id);
+
+  /* ---------------- Utilities ---------------- */
+  // Pure-JS SHA-256 (no dependency on window.crypto.subtle, which browsers only
+  // expose in a "secure context" — https, or localhost. Opening this file directly
+  // as file://index.html is NOT a secure context, so relying on crypto.subtle would
+  // leave the passcode screen stuck with no way forward. This works everywhere.
+  function sha256Hex(str){
+    function rightRotate(v,a){ return (v>>>a) | (v<<(32-a)); }
+    const K = [
+      0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+      0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+      0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+      0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+      0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+      0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+      0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+      0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2
+    ];
+    const h = [0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+    const msg = Array.from(new TextEncoder().encode(str));
+    const bitLen = msg.length*8;
+    msg.push(0x80);
+    while(msg.length % 64 !== 56) msg.push(0);
+    const bitLenHi = Math.floor(bitLen/0x100000000), bitLenLo = bitLen>>>0;
+    for(let i=3;i>=0;i--) msg.push((bitLenHi>>>(8*i))&0xff);
+    for(let i=3;i>=0;i--) msg.push((bitLenLo>>>(8*i))&0xff);
+    for(let cs=0; cs<msg.length; cs+=64){
+      const w = new Array(64).fill(0);
+      for(let i=0;i<16;i++){
+        w[i] = ((msg[cs+i*4]<<24)|(msg[cs+i*4+1]<<16)|(msg[cs+i*4+2]<<8)|(msg[cs+i*4+3]))>>>0;
+      }
+      for(let i=16;i<64;i++){
+        const s0 = rightRotate(w[i-15],7)^rightRotate(w[i-15],18)^(w[i-15]>>>3);
+        const s1 = rightRotate(w[i-2],17)^rightRotate(w[i-2],19)^(w[i-2]>>>10);
+        w[i] = (w[i-16]+s0+w[i-7]+s1)>>>0;
+      }
+      let [a,b,c,d,e,f,g,hh] = h;
+      for(let i=0;i<64;i++){
+        const S1 = rightRotate(e,6)^rightRotate(e,11)^rightRotate(e,25);
+        const ch = (e&f)^(~e&g);
+        const temp1 = (hh+S1+ch+K[i]+w[i])>>>0;
+        const S0 = rightRotate(a,2)^rightRotate(a,13)^rightRotate(a,22);
+        const maj = (a&b)^(a&c)^(b&c);
+        const temp2 = (S0+maj)>>>0;
+        hh=g; g=f; f=e; e=(d+temp1)>>>0;
+        d=c; c=b; b=a; a=(temp1+temp2)>>>0;
+      }
+      h[0]=(h[0]+a)>>>0; h[1]=(h[1]+b)>>>0; h[2]=(h[2]+c)>>>0; h[3]=(h[3]+d)>>>0;
+      h[4]=(h[4]+e)>>>0; h[5]=(h[5]+f)>>>0; h[6]=(h[6]+g)>>>0; h[7]=(h[7]+hh)>>>0;
+    }
+    return h.map(x=>x.toString(16).padStart(8,"0")).join("");
+  }
+
+  function b64EncodeUnicode(str){
+    const bytes = new TextEncoder().encode(str);
+    let binary = "";
+    bytes.forEach(b => binary += String.fromCharCode(b));
+    return btoa(binary);
+  }
+  function b64DecodeUnicode(b64){
+    const binary = atob(b64.replace(/\n/g, ""));
+    const bytes = new Uint8Array(binary.length);
+    for(let i=0;i<binary.length;i++) bytes[i] = binary.charCodeAt(i);
+    return new TextDecoder().decode(bytes);
+  }
+
+  function uid(){ return "p_" + Date.now().toString(36) + "_" + Math.random().toString(36).slice(2,8); }
+  function pad2(n){ return String(n).padStart(2,"0"); }
+  function todayStr(){
+    const d = new Date();
+    return d.getFullYear() + "-" + pad2(d.getMonth()+1) + "-" + pad2(d.getDate());
+  }
+  function nowHHMM(){
+    const d = new Date();
+    return pad2(d.getHours()) + ":" + pad2(d.getMinutes());
+  }
+
+  let toastTimer = null;
+  function toast(msg){
+    const el = $("toast");
+    el.textContent = msg;
+    el.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove("show"), 2200);
+  }
+
+  function getConfig(){ try{ return JSON.parse(localStorage.getItem(LS_CONFIG) || "null"); }catch(e){ return null; } }
+  function setConfig(cfg){ try{ localStorage.setItem(LS_CONFIG, JSON.stringify(cfg)); }catch(e){} }
+  function hasPasscode(){ try{ return !!localStorage.getItem(LS_PASSCODE_HASH); }catch(e){ return false; } }
+  function hasConfig(){ return !!getConfig(); }
+  function isUnlockedThisSession(){ try{ return sessionStorage.getItem(SS_UNLOCKED) === "1"; }catch(e){ return false; } }
+  function setUnlockedThisSession(){ try{ sessionStorage.setItem(SS_UNLOCKED, "1"); }catch(e){} }
+
+  /* ---------------- Theme ---------------- */
+  function applyTheme(t){
+    document.documentElement.setAttribute("data-theme", t);
+    const meta = $("theme-color-meta");
+    if(meta) meta.setAttribute("content", t === "light" ? "#f6f1e4" : "#17130d");
+    const btn = $("theme-toggle-btn");
+    if(btn) btn.textContent = t === "dark" ? "☀" : "🌙";
+  }
+  function toggleTheme(){
+    const cur = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+    const next = cur === "light" ? "dark" : "light";
+    applyTheme(next);
+    try{ localStorage.setItem(LS_THEME, next); }catch(e){}
+  }
+
+  /* ---------------- State ---------------- */
+  const DEFAULT_STATE = { version:1, project:"", lastDurationMins:50, parkingLot:[], logs:{} };
+  let state = Object.assign({}, DEFAULT_STATE);
+  let remoteSha = null;
+  let saveTimer = null;
+  let saving = false;
+  let dirty = false;
+
+  function loadCacheIntoState(){
+    try{
+      const cached = localStorage.getItem(LS_CACHE);
+      if(cached) state = Object.assign({}, DEFAULT_STATE, JSON.parse(cached));
+    }catch(e){}
+  }
+
+  /* ---------------- GitHub API (Contents API, base64 + sha concurrency) ---------------- */
+  function apiHeaders(cfg){
+    return {
+      "Authorization": "Bearer " + cfg.token,
+      "Accept": "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+      "Content-Type": "application/json"
+    };
+  }
+  function contentsUrl(cfg){
+    return `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${cfg.path.split("/").map(encodeURIComponent).join("/")}`;
+  }
+  async function fetchRemote(cfg){
+    const res = await fetch(contentsUrl(cfg) + `?ref=${encodeURIComponent(cfg.branch)}&_=${Date.now()}`, {
+      headers: apiHeaders(cfg), cache:"no-store"
+    });
+    if(res.status === 404) return { data:null, sha:null };
+    if(!res.ok){
+      const body = await res.text().catch(()=> "");
+      throw new Error(`GitHub GET failed (${res.status}): ${body.slice(0,200)}`);
+    }
+    const json = await res.json();
+    const text = b64DecodeUnicode(json.content);
+    let parsed;
+    try{ parsed = JSON.parse(text); }catch(e){ throw new Error("focus.json is not valid JSON"); }
+    return { data: parsed, sha: json.sha };
+  }
+  async function putRemote(cfg, data, sha){
+    const body = {
+      message: "Update focus data (" + new Date().toISOString() + ")",
+      content: b64EncodeUnicode(JSON.stringify(data, null, 2)),
+      branch: cfg.branch
+    };
+    if(sha) body.sha = sha;
+    const res = await fetch(contentsUrl(cfg), { method:"PUT", headers: apiHeaders(cfg), body: JSON.stringify(body) });
+    if(!res.ok){
+      const errBody = await res.json().catch(()=>({}));
+      const err = new Error(`GitHub PUT failed (${res.status}): ${errBody.message || ""}`);
+      err.status = res.status;
+      throw err;
+    }
+    const json = await res.json();
+    return json.content.sha;
+  }
+  function setSyncStatus(kind, text){
+    const dot = $("sync-dot");
+    dot.className = "sync-dot" + (kind ? " " + kind : "");
+    dot.title = text || "";
+  }
+  async function loadFromRemote(){
+    const cfg = getConfig();
+    if(!cfg) return;
+    setSyncStatus("busy", "loading…");
+    try{
+      const { data, sha } = await fetchRemote(cfg);
+      remoteSha = sha;
+      if(data === null){
+        remoteSha = await putRemote(cfg, state, null);
+        setSyncStatus("ok", "created data file");
+      } else {
+        state = Object.assign({}, DEFAULT_STATE, data);
+        try{ localStorage.setItem(LS_CACHE, JSON.stringify(state)); }catch(e){}
+        setSyncStatus("ok", "synced");
+      }
+      render();
+    }catch(err){
+      console.error(err);
+      let cached = null;
+      try{ cached = localStorage.getItem(LS_CACHE); }catch(e){}
+      if(cached){ try{ state = Object.assign({}, DEFAULT_STATE, JSON.parse(cached)); render(); }catch(e){} }
+      setSyncStatus("err", "offline / sync error");
+      toast("Could not reach GitHub — showing last saved copy.");
+    }
+  }
+  function scheduleSave(){
+    dirty = true;
+    setSyncStatus("busy", "unsaved changes…");
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveNow, 900);
+  }
+  async function saveNow(retry){
+    const cfg = getConfig();
+    if(!cfg || saving) return;
+    saving = true;
+    dirty = false;
+    setSyncStatus("busy", "saving…");
+    try{
+      try{ localStorage.setItem(LS_CACHE, JSON.stringify(state)); }catch(e){}
+      remoteSha = await putRemote(cfg, state, remoteSha);
+      setSyncStatus("ok", "saved");
+    }catch(err){
+      console.error(err);
+      if(err.status === 409 && !retry){
+        try{
+          const fresh = await fetchRemote(cfg);
+          remoteSha = fresh.sha;
+          saving = false;
+          return saveNow(true);
+        }catch(e2){ /* fall through to error state */ }
+      }
+      setSyncStatus("err", "save failed — will retry");
+      toast("Couldn't save to GitHub. Check your connection or token in Settings.");
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(saveNow, 5000);
+    }finally{
+      saving = false;
+      if(dirty){ clearTimeout(saveTimer); saveTimer = setTimeout(saveNow, 900); }
+    }
+  }
+  window.addEventListener("beforeunload", () => { if(dirty) saveNow(); });
+  document.addEventListener("visibilitychange", () => {
+    if(document.visibilityState === "visible" && !dirty && !saving && hasConfig() && isUnlockedThisSession()){
+      loadFromRemote();
+    }
+  });
+
+  /* ---------------- Passcode / lock / setup ---------------- */
+  function showApp(){
+    $("lock-screen").hidden = true;
+    $("setup-screen").hidden = true;
+    $("app-root").hidden = false;
+  }
+  function afterUnlock(){
+    loadCacheIntoState();
+    showApp();
+    render();
+    updateStartEnablement();
+    loadFromRemote();
+  }
+  function tryUnlock(){
+    const val = $("passcode-input").value;
+    $("lock-error").textContent = "";
+    try{
+      const hash = sha256Hex(val);
+      let stored = null;
+      try{ stored = localStorage.getItem(LS_PASSCODE_HASH); }catch(e){}
+      if(hash === stored){
+        setUnlockedThisSession();
+        afterUnlock();
+      } else {
+        $("lock-error").textContent = "Incorrect passcode.";
+        $("passcode-input").value = "";
+      }
+    }catch(err){
+      $("lock-error").textContent = "Something went wrong checking the passcode (" + err.message + ").";
+    }
+  }
+  function saveSetup(){
+    const pass = $("setup-passcode").value;
+    const confirmPass = $("setup-passcode-confirm").value;
+    const owner = $("setup-owner").value.trim();
+    const repo = $("setup-repo").value.trim();
+    const branch = $("setup-branch").value.trim() || "main";
+    const path = $("setup-path").value.trim() || "data/focus.json";
+    const token = $("setup-token").value.trim();
+    $("setup-error").textContent = "";
+    if(!pass || pass.length < 4){ $("setup-error").textContent = "Choose a passcode of at least 4 characters."; return; }
+    if(pass !== confirmPass){ $("setup-error").textContent = "Passcodes don't match."; return; }
+    if(!owner || !repo || !token){ $("setup-error").textContent = "GitHub username, repository, and token are all required."; return; }
+    try{
+      localStorage.setItem(LS_PASSCODE_HASH, sha256Hex(pass));
+      setConfig({ owner, repo, branch, path, token });
+    }catch(e){
+      $("setup-error").textContent = "Couldn't save — local storage may be blocked in this browser.";
+      return;
+    }
+    setUnlockedThisSession();
+    afterUnlock();
+  }
+
+  /* ---------------- Settings ---------------- */
+  function openSettings(){
+    const cfg = getConfig() || {};
+    $("s-owner").value = cfg.owner || "";
+    $("s-repo").value = cfg.repo || "";
+    $("s-branch").value = cfg.branch || "main";
+    $("s-path").value = cfg.path || "data/focus.json";
+    $("s-token").value = "";
+    $("s-new-passcode").value = "";
+    $("settings-error").textContent = "";
+    $("settings-screen").hidden = false;
+  }
+  function closeSettings(){ $("settings-screen").hidden = true; }
+  function saveSettings(){
+    const owner = $("s-owner").value.trim();
+    const repo = $("s-repo").value.trim();
+    const branch = $("s-branch").value.trim() || "main";
+    const path = $("s-path").value.trim() || "data/focus.json";
+    const newToken = $("s-token").value.trim();
+    const newPass = $("s-new-passcode").value;
+    $("settings-error").textContent = "";
+    if(!owner || !repo){ $("settings-error").textContent = "Username and repository are required."; return; }
+    const existing = getConfig() || {};
+    const token = newToken || existing.token;
+    if(!token){ $("settings-error").textContent = "A personal access token is required."; return; }
+    if(newPass && newPass.length < 4){ $("settings-error").textContent = "New passcode must be at least 4 characters."; return; }
+    try{
+      setConfig({ owner, repo, branch, path, token });
+      if(newPass) localStorage.setItem(LS_PASSCODE_HASH, sha256Hex(newPass));
+    }catch(e){
+      $("settings-error").textContent = "Couldn't save settings.";
+      return;
+    }
+    closeSettings();
+    toast("Settings saved.");
+    remoteSha = null;
+    loadFromRemote();
+  }
+  function forgetDevice(){
+    if(!confirm("This clears the saved passcode, GitHub connection, and local cache on THIS device only. Your data in GitHub is untouched. Continue?")) return;
+    try{
+      localStorage.removeItem(LS_PASSCODE_HASH);
+      localStorage.removeItem(LS_CONFIG);
+      localStorage.removeItem(LS_CACHE);
+      sessionStorage.removeItem(SS_UNLOCKED);
+    }catch(e){}
+    location.reload();
+  }
+
+  /* ---------------- Timer engine ---------------- */
+  const RING_R = 104;
+  const RING_CIRC = 2 * Math.PI * RING_R;
+  let timerState = "idle"; // idle | running | paused
+  let endTimestamp = null;
+  let remainingMs = 0;
+  let totalMs = 0;
+  let tickHandle = null;
+  let audioCtx = null;
+
+  function setRingCircumferenceOnce(){ $("ring-progress").style.strokeDasharray = RING_CIRC.toFixed(2); }
+
+  function formatMMSS(ms){
+    const totalSec = Math.max(0, Math.round(ms/1000));
+    return pad2(Math.floor(totalSec/60)) + ":" + pad2(totalSec%60);
+  }
+  function updateRingAndDigits(remainingMsVal, totalMsVal){
+    $("timer-digits").textContent = formatMMSS(remainingMsVal);
+    const frac = totalMsVal > 0 ? Math.min(1, Math.max(0, 1 - remainingMsVal/totalMsVal)) : 0;
+    $("ring-progress").style.strokeDashoffset = (RING_CIRC * frac).toFixed(2);
+  }
+  function clampMinutes(n){
+    if(!Number.isFinite(n) || n <= 0) return 1;
+    return Math.min(600, Math.round(n));
+  }
+  function syncDigitsToDurationInput(){
+    const mins = clampMinutes(parseInt($("duration-input").value, 10)) || state.lastDurationMins || 50;
+    totalMs = mins * 60 * 1000;
+    remainingMs = totalMs;
+    updateRingAndDigits(remainingMs, totalMs || 1);
+  }
+  function lockFields(lock){
+    $("project-input").readOnly = lock;
+    $("outcome-input").readOnly = lock;
+    $("duration-input").disabled = lock;
+    document.querySelectorAll(".chip").forEach(c => c.disabled = lock);
+  }
+  function updateStartPauseBtn(){
+    const btn = $("start-pause-btn");
+    btn.textContent = timerState === "running" ? "Pause" : timerState === "paused" ? "Resume" : "Start";
+  }
+  function updateStartEnablement(){
+    $("start-pause-btn").disabled = timerState === "idle" && $("outcome-input").value.trim().length === 0;
+  }
+  function startTicking(){
+    stopTicking();
+    tick();
+    tickHandle = setInterval(tick, 250);
+  }
+  function stopTicking(){
+    if(tickHandle){ clearInterval(tickHandle); tickHandle = null; }
+  }
+  function tick(){
+    if(timerState !== "running") return;
+    remainingMs = endTimestamp - Date.now();
+    if(remainingMs <= 0){
+      stopTicking();
+      updateRingAndDigits(0, totalMs);
+      completeBlock();
+      return;
+    }
+    updateRingAndDigits(remainingMs, totalMs);
+  }
+  function startBlock(){
+    const mins = clampMinutes(parseInt($("duration-input").value, 10));
+    $("duration-input").value = mins;
+    totalMs = mins * 60 * 1000;
+    remainingMs = totalMs;
+    endTimestamp = Date.now() + remainingMs;
+    timerState = "running";
+    state.project = $("project-input").value.trim();
+    state.lastDurationMins = mins;
+    try{
+      if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if(audioCtx.state === "suspended") audioCtx.resume();
+    }catch(e){ /* Web Audio unavailable — chime will just be silently skipped later */ }
+    lockFields(true);
+    $("complete-msg").textContent = "";
+    updateStartPauseBtn();
+    startTicking();
+    scheduleSave();
+  }
+  function pauseResumeBlock(){
+    if(timerState === "running"){
+      remainingMs = Math.max(0, endTimestamp - Date.now());
+      endTimestamp = null;
+      timerState = "paused";
+      stopTicking();
+      lockFields(false);
+      updateStartPauseBtn();
+      updateStartEnablement();
+    } else if(timerState === "paused"){
+      endTimestamp = Date.now() + remainingMs;
+      timerState = "running";
+      lockFields(true);
+      startTicking();
+      updateStartPauseBtn();
+    } else {
+      startBlock();
+    }
+  }
+  function resetBlock(){
+    if(timerState === "running" || timerState === "paused"){
+      if(!confirm("Reset this block? Time won't be logged.")) return;
+    }
+    stopTicking();
+    timerState = "idle";
+    endTimestamp = null;
+    lockFields(false);
+    $("complete-msg").textContent = "";
+    updateStartPauseBtn();
+    updateStartEnablement();
+    syncDigitsToDurationInput();
+  }
+  function playChime(){
+    try{
+      if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const ctx = audioCtx;
+      const now = ctx.currentTime;
+      [880, 1320].forEach((freq, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0, now + i*0.15);
+        gain.gain.linearRampToValueAtTime(0.25, now + i*0.15 + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + i*0.15 + 0.5);
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.start(now + i*0.15);
+        osc.stop(now + i*0.15 + 0.55);
+      });
+    }catch(e){ /* audio unavailable — degrade silently, block still logs */ }
+  }
+  function completeBlock(){
+    playChime();
+    $("complete-msg").textContent = "Block complete.";
+    const entry = {
+      time: nowHHMM(),
+      task: $("outcome-input").value.trim(),
+      project: $("project-input").value.trim(),
+      mins: Math.round(totalMs / 60000)
+    };
+    const day = todayStr();
+    if(!state.logs[day]) state.logs[day] = [];
+    state.logs[day].push(entry);
+    $("outcome-input").value = "";
+    timerState = "idle";
+    endTimestamp = null;
+    lockFields(false);
+    updateStartPauseBtn();
+    updateStartEnablement();
+    syncDigitsToDurationInput();
+    renderParkingLot();
+    renderLog();
+    scheduleSave();
+  }
+
+  /* ---------------- Parking lot ---------------- */
+  function addParkItem(){
+    const input = $("park-input");
+    const text = input.value.trim();
+    if(!text) return;
+    state.parkingLot.push({ id: uid(), text, done:false });
+    input.value = "";
+    renderParkingLot();
+    scheduleSave();
+  }
+  function toggleParkItem(id){
+    const item = state.parkingLot.find(p => p.id === id);
+    if(item){ item.done = !item.done; renderParkingLot(); scheduleSave(); }
+  }
+  function deleteParkItem(id){
+    state.parkingLot = state.parkingLot.filter(p => p.id !== id);
+    renderParkingLot();
+    scheduleSave();
+  }
+  function renderParkingLot(){
+    const list = $("park-list");
+    list.innerHTML = "";
+    $("park-empty").hidden = state.parkingLot.length > 0;
+    state.parkingLot.slice().reverse().forEach(item => {
+      const row = document.createElement("div");
+      row.className = "park-item";
+      const check = document.createElement("button");
+      check.type = "button";
+      check.className = "park-check" + (item.done ? " done" : "");
+      check.setAttribute("aria-label", item.done ? "Mark not done" : "Mark done");
+      check.onclick = () => toggleParkItem(item.id);
+      const text = document.createElement("span");
+      text.className = "park-text" + (item.done ? " done" : "");
+      text.textContent = item.text;
+      const del = document.createElement("button");
+      del.type = "button";
+      del.className = "delete-btn";
+      del.setAttribute("aria-label", "Delete");
+      del.textContent = "✕";
+      del.onclick = () => deleteParkItem(item.id);
+      row.append(check, text, del);
+      list.appendChild(row);
+    });
+  }
+
+  /* ---------------- Today's log ---------------- */
+  function renderLog(){
+    const day = todayStr();
+    const entries = state.logs[day] || [];
+    const list = $("log-list");
+    list.innerHTML = "";
+    $("log-empty").hidden = entries.length > 0;
+    let totalMins = 0;
+    entries.slice().reverse().forEach(e => {
+      totalMins += e.mins || 0;
+      const row = document.createElement("div");
+      row.className = "log-item";
+      const meta = document.createElement("div");
+      meta.className = "log-meta";
+      const outcome = document.createElement("div");
+      outcome.className = "log-outcome";
+      outcome.textContent = e.task || "(no outcome noted)";
+      const sub = document.createElement("div");
+      sub.className = "log-sub";
+      sub.textContent = e.time + (e.project ? " · " + e.project : "");
+      meta.append(outcome, sub);
+      const mins = document.createElement("div");
+      mins.className = "log-mins";
+      mins.textContent = e.mins + "m";
+      row.append(meta, mins);
+      list.appendChild(row);
+    });
+    $("log-summary").textContent = entries.length
+      ? `${entries.length} block${entries.length === 1 ? "" : "s"} · ${totalMins} minute${totalMins === 1 ? "" : "s"} focused today`
+      : "";
+  }
+  function clearTodayLog(){
+    if(!confirm("Clear today's log? This can't be undone.")) return;
+    state.logs[todayStr()] = [];
+    renderLog();
+    scheduleSave();
+  }
+
+  /* ---------------- Master render ---------------- */
+  function render(){
+    $("project-input").value = state.project || "";
+    $("duration-input").value = state.lastDurationMins || 50;
+    if(timerState === "idle") syncDigitsToDurationInput();
+    renderParkingLot();
+    renderLog();
+  }
+
+  /* ---------------- Wiring ---------------- */
+  $("project-input").addEventListener("input", () => { state.project = $("project-input").value; scheduleSave(); });
+  $("outcome-input").addEventListener("input", updateStartEnablement);
+  $("duration-input").addEventListener("input", () => {
+    if(timerState === "idle"){
+      const mins = parseInt($("duration-input").value, 10);
+      if(Number.isFinite(mins) && mins > 0){ totalMs = mins*60*1000; remainingMs = totalMs; updateRingAndDigits(remainingMs, totalMs); }
+    }
+  });
+  $("duration-input").addEventListener("change", () => {
+    const mins = clampMinutes(parseInt($("duration-input").value, 10));
+    $("duration-input").value = mins;
+    state.lastDurationMins = mins;
+    scheduleSave();
+  });
+  document.querySelectorAll(".chip").forEach(chip => {
+    chip.addEventListener("click", () => {
+      if(chip.disabled) return;
+      $("duration-input").value = chip.dataset.mins;
+      $("duration-input").dispatchEvent(new Event("input"));
+      $("duration-input").dispatchEvent(new Event("change"));
+    });
+  });
+  $("start-pause-btn").addEventListener("click", pauseResumeBlock);
+  $("reset-btn").addEventListener("click", resetBlock);
+  $("park-add-btn").addEventListener("click", addParkItem);
+  $("park-input").addEventListener("keydown", e => { if(e.key === "Enter") addParkItem(); });
+  $("clear-log-btn").addEventListener("click", clearTodayLog);
+  $("theme-toggle-btn").addEventListener("click", toggleTheme);
+  $("unlock-btn").addEventListener("click", tryUnlock);
+  $("passcode-input").addEventListener("keydown", e => { if(e.key === "Enter") tryUnlock(); });
+  $("setup-save-btn").addEventListener("click", saveSetup);
+  $("settings-btn").addEventListener("click", openSettings);
+  $("settings-cancel-btn").addEventListener("click", closeSettings);
+  $("settings-save-btn").addEventListener("click", saveSettings);
+  $("forget-device-btn").addEventListener("click", forgetDevice);
+
+  /* ---------------- Boot ---------------- */
+  function boot(){
+    applyTheme(document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark");
+    setRingCircumferenceOnce();
+    updateStartPauseBtn();
+    if(!hasPasscode() || !hasConfig()){
+      $("setup-screen").hidden = false;
+      return;
+    }
+    if(isUnlockedThisSession()){
+      afterUnlock();
+    } else {
+      $("lock-screen").hidden = false;
+    }
+  }
+  boot();
+})();
+</script>
+</body>
+</html>
