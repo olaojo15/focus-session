@@ -36,6 +36,12 @@
         "task": "Address all of Lucy’s comments",
         "project": "Project Report",
         "mins": 45
+      },
+      {
+        "time": "12:45",
+        "task": "Test",
+        "project": "Test",
+        "mins": 1
       }
     ]
   }
