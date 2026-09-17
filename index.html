@@ -796,10 +796,16 @@
     updateStartEnablement();
     syncDigitsToDurationInput();
   }
-  function playChime(){
+  async function playChime(){
     try{
       if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       const ctx = audioCtx;
+      // iOS suspends idle AudioContexts to save power — after minutes of silence
+      // waiting for the timer, ctx.state is often "suspended" again by the time
+      // the block completes, and a suspended context silently drops anything
+      // scheduled on it (no error). Must resume first, and read currentTime
+      // only after resuming since it's frozen while suspended.
+      if(ctx.state !== "running") await ctx.resume();
       const now = ctx.currentTime;
       [880, 1320].forEach((freq, i) => {
         const osc = ctx.createOscillator();
