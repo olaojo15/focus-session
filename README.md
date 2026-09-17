@@ -94,6 +94,26 @@ From here, both devices read and write the same `data/focus.json` file, so a blo
 log on your phone shows up on your laptop next time it syncs (on load, and whenever you
 switch back to the tab/app).
 
+### 7. Optional: a native backup alarm on iPhone (recommended)
+
+The in-app chime is a web page sound — it can't fire while the phone is locked, and on
+some iOS versions an idle tab's audio can be unreliable even when unlocked. For a chime
+that's guaranteed to ring (it uses the same system alarm sound as the Clock app, plays
+through the silent switch, and fires even while locked), set up a one-time Shortcut:
+
+1. Open the **Shortcuts** app → **+** to create a new shortcut.
+2. Name it exactly **`Focus Timer`** (the app links to it by this name).
+3. Add one action: **Start Timer**.
+4. Set its duration to use **Shortcut Input** (tap the duration field → look for
+   "Shortcut Input" in the variable picker, or select it under the magic-variable menu)
+   rather than typing a fixed number — the app passes the block's length in minutes.
+5. Save it.
+
+On iPhone, a **🔔 Also set a phone timer** link now appears under the Start/Reset
+buttons. Tap it (in addition to Start) and it hands off to Shortcuts for a second to set
+a real Clock timer for the same duration, then returns you to the app. It's a manual,
+one-extra-tap step each time — iOS doesn't allow a web page to trigger this silently.
+
 ## Day to day
 
 - Fill in a project (optional) and an outcome, set a duration, hit Start.

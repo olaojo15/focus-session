@@ -304,6 +304,7 @@
         <button type="button" class="btn" id="reset-btn">Reset</button>
         <button type="button" class="btn btn-primary" id="start-pause-btn">Start</button>
       </div>
+      <button type="button" class="text-btn" id="shortcut-btn" hidden>🔔 Also set a phone timer</button>
     </div>
   </div>
 
@@ -962,6 +963,19 @@
   });
   $("start-pause-btn").addEventListener("click", pauseResumeBlock);
   $("reset-btn").addEventListener("click", resetBlock);
+  // Web pages can't set a native alarm directly; this hands off to a
+  // Shortcut (built once by the user) via the shortcuts:// URL scheme, so
+  // the phone's Clock app rings a real timer that fires through the
+  // silent switch and while the phone is locked — neither of which a
+  // page's own JS/audio can do.
+  function isIOS(){
+    return /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  }
+  if(isIOS()) $("shortcut-btn").hidden = false;
+  $("shortcut-btn").addEventListener("click", () => {
+    const mins = clampMinutes(parseInt($("duration-input").value, 10)) || state.lastDurationMins || 50;
+    location.href = "shortcuts://run-shortcut?name=" + encodeURIComponent("Focus Timer") + "&input=text&text=" + encodeURIComponent(String(mins));
+  });
   $("park-add-btn").addEventListener("click", addParkItem);
   $("park-input").addEventListener("keydown", e => { if(e.key === "Enter") addParkItem(); });
   $("clear-log-btn").addEventListener("click", clearTodayLog);
