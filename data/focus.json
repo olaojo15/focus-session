@@ -30,37 +30,6 @@
     }
   ],
   "logs": {
-    "2026-09-17": [
-      {
-        "time": "11:45",
-        "task": "Address all of Lucy’s comments",
-        "project": "Project Report",
-        "mins": 45
-      },
-      {
-        "time": "12:45",
-        "task": "Test",
-        "project": "Test",
-        "mins": 1
-      },
-      {
-        "time": "12:46",
-        "task": "Test 2",
-        "project": "Test",
-        "mins": 1
-      },
-      {
-        "time": "13:17",
-        "task": "Test 3",
-        "project": "Test",
-        "mins": 1
-      },
-      {
-        "time": "13:21",
-        "task": "Test 4",
-        "project": "Test",
-        "mins": 1
-      }
-    ]
+    "2026-09-17": []
   }
 }
